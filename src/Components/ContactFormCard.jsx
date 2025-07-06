@@ -19,7 +19,7 @@ const ContactForm = ({ isOpen, onClose }) => {
 
     const validateForm = () => {
         const newErrors = {};
-        
+
         if (!formData.name.trim()) newErrors.name = "Name is required";
         if (!formData.email.trim()) {
             newErrors.email = "Email is required";
@@ -27,28 +27,28 @@ const ContactForm = ({ isOpen, onClose }) => {
             newErrors.email = "Email is invalid";
         }
         if (!formData.message.trim()) newErrors.message = "Message is required";
-        
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
     const sendEmail = (e) => {
         e.preventDefault();
-        
+
         if (!validateForm()) return;
-        
+
         setIsLoading(true);
 
         emailjs
             .send(
-                "service_nj60h7f",
-                "template_efn3eju",
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
                 {
                     name: formData.name,
                     email: formData.email,
                     message: formData.message,
                 },
-                "c4VhjZHCQNQF7aDRx"
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
             )
             .then(() => {
                 setIsLoading(false);
@@ -68,9 +68,9 @@ const ContactForm = ({ isOpen, onClose }) => {
 
     const modalVariants = {
         hidden: { opacity: 0, scale: 0.9, y: 30 },
-        visible: { 
-            opacity: 1, 
-            scale: 1, 
+        visible: {
+            opacity: 1,
+            scale: 1,
             y: 0,
             transition: {
                 type: "spring",
@@ -79,9 +79,9 @@ const ContactForm = ({ isOpen, onClose }) => {
                 staggerChildren: 0.1
             }
         },
-        exit: { 
-            opacity: 0, 
-            scale: 0.9, 
+        exit: {
+            opacity: 0,
+            scale: 0.9,
             y: 30,
             transition: {
                 duration: 0.2
@@ -97,8 +97,8 @@ const ContactForm = ({ isOpen, onClose }) => {
 
     const itemVariants = {
         hidden: { opacity: 0, y: 20 },
-        visible: { 
-            opacity: 1, 
+        visible: {
+            opacity: 1,
             y: 0,
             transition: {
                 type: "spring",
@@ -110,8 +110,8 @@ const ContactForm = ({ isOpen, onClose }) => {
 
     const successVariants = {
         hidden: { opacity: 0, scale: 0.5 },
-        visible: { 
-            opacity: 1, 
+        visible: {
+            opacity: 1,
             scale: 1,
             transition: {
                 type: "spring",
@@ -119,8 +119,8 @@ const ContactForm = ({ isOpen, onClose }) => {
                 damping: 25
             }
         },
-        exit: { 
-            opacity: 0, 
+        exit: {
+            opacity: 0,
             scale: 0.5,
             transition: {
                 duration: 0.3
@@ -133,7 +133,7 @@ const ContactForm = ({ isOpen, onClose }) => {
             {/* Contact Form Modal */}
             <AnimatePresence>
                 {isOpen && (
-                    <motion.div 
+                    <motion.div
                         className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm z-50 p-4"
                         variants={backdropVariants}
                         initial="hidden"
@@ -147,7 +147,7 @@ const ContactForm = ({ isOpen, onClose }) => {
                             onClick={(e) => e.stopPropagation()}
                         >
                             {/* Decorative Background */}
-                            <motion.div 
+                            <motion.div
                                 className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-400/20 to-blue-400/20 rounded-full -translate-y-16 translate-x-16"
                                 animate={{
                                     rotate: [0, 360],
@@ -159,7 +159,7 @@ const ContactForm = ({ isOpen, onClose }) => {
                                     ease: "linear"
                                 }}
                             />
-                            <motion.div 
+                            <motion.div
                                 className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-400/20 to-pink-400/20 rounded-full translate-y-12 -translate-x-12"
                                 animate={{
                                     rotate: [360, 0],
@@ -171,7 +171,7 @@ const ContactForm = ({ isOpen, onClose }) => {
                                     ease: "linear"
                                 }}
                             />
-                            
+
                             {/* Close Button */}
                             <motion.button
                                 onClick={onClose}
@@ -186,11 +186,11 @@ const ContactForm = ({ isOpen, onClose }) => {
                             </motion.button>
 
                             {/* Enhanced Header with Logo Animation */}
-                            <motion.div 
+                            <motion.div
                                 className="text-center mb-8 relative z-10"
                                 variants={itemVariants}
                             >
-                                <motion.div 
+                                <motion.div
                                     className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg relative"
                                     animate={{
                                         boxShadow: [
@@ -223,7 +223,7 @@ const ContactForm = ({ isOpen, onClose }) => {
                                     >
                                         <FaPaperPlane className="text-white text-xl" />
                                     </motion.div>
-                                    
+
                                     {/* Subtle pulse ring */}
                                     <motion.div
                                         className="absolute inset-0 rounded-full border-2 border-white/30"
@@ -238,14 +238,14 @@ const ContactForm = ({ isOpen, onClose }) => {
                                         }}
                                     />
                                 </motion.div>
-                                
-                                <motion.h2 
+
+                                <motion.h2
                                     className="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent"
                                     variants={itemVariants}
                                 >
                                     Let's Connect!
                                 </motion.h2>
-                                <motion.p 
+                                <motion.p
                                     className="text-gray-600 dark:text-gray-400 mt-2"
                                     variants={itemVariants}
                                 >
@@ -254,13 +254,13 @@ const ContactForm = ({ isOpen, onClose }) => {
                             </motion.div>
 
                             {/* Form */}
-                            <motion.form 
-                                onSubmit={sendEmail} 
+                            <motion.form
+                                onSubmit={sendEmail}
                                 className="space-y-6 relative z-10"
                                 variants={itemVariants}
                             >
                                 {/* Name Field */}
-                                <motion.div 
+                                <motion.div
                                     className="relative"
                                     variants={itemVariants}
                                     whileHover={{ scale: 1.02 }}
@@ -275,15 +275,14 @@ const ContactForm = ({ isOpen, onClose }) => {
                                         placeholder="Your Name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 transition-all duration-200 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500/50 ${
-                                            errors.name 
-                                                ? 'border-red-500 focus:border-red-500' 
+                                        className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 transition-all duration-200 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500/50 ${errors.name
+                                                ? 'border-red-500 focus:border-red-500'
                                                 : 'border-gray-200 dark:border-gray-600 focus:border-green-500'
-                                        }`}
+                                            }`}
                                     />
                                     <AnimatePresence>
                                         {errors.name && (
-                                            <motion.p 
+                                            <motion.p
                                                 className="text-red-500 text-sm mt-1 ml-1"
                                                 initial={{ opacity: 0, x: -10, height: 0 }}
                                                 animate={{ opacity: 1, x: 0, height: "auto" }}
@@ -296,7 +295,7 @@ const ContactForm = ({ isOpen, onClose }) => {
                                 </motion.div>
 
                                 {/* Email Field */}
-                                <motion.div 
+                                <motion.div
                                     className="relative"
                                     variants={itemVariants}
                                     whileHover={{ scale: 1.02 }}
@@ -311,15 +310,14 @@ const ContactForm = ({ isOpen, onClose }) => {
                                         placeholder="Your Email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 transition-all duration-200 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500/50 ${
-                                            errors.email 
-                                                ? 'border-red-500 focus:border-red-500' 
+                                        className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 transition-all duration-200 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500/50 ${errors.email
+                                                ? 'border-red-500 focus:border-red-500'
                                                 : 'border-gray-200 dark:border-gray-600 focus:border-green-500'
-                                        }`}
+                                            }`}
                                     />
                                     <AnimatePresence>
                                         {errors.email && (
-                                            <motion.p 
+                                            <motion.p
                                                 className="text-red-500 text-sm mt-1 ml-1"
                                                 initial={{ opacity: 0, x: -10, height: 0 }}
                                                 animate={{ opacity: 1, x: 0, height: "auto" }}
@@ -332,7 +330,7 @@ const ContactForm = ({ isOpen, onClose }) => {
                                 </motion.div>
 
                                 {/* Message Field */}
-                                <motion.div 
+                                <motion.div
                                     className="relative"
                                     variants={itemVariants}
                                     whileHover={{ scale: 1.02 }}
@@ -347,15 +345,14 @@ const ContactForm = ({ isOpen, onClose }) => {
                                         value={formData.message}
                                         onChange={handleChange}
                                         rows="4"
-                                        className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 transition-all duration-200 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500/50 resize-none ${
-                                            errors.message 
-                                                ? 'border-red-500 focus:border-red-500' 
+                                        className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 transition-all duration-200 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500/50 resize-none ${errors.message
+                                                ? 'border-red-500 focus:border-red-500'
                                                 : 'border-gray-200 dark:border-gray-600 focus:border-green-500'
-                                        }`}
+                                            }`}
                                     />
                                     <AnimatePresence>
                                         {errors.message && (
-                                            <motion.p 
+                                            <motion.p
                                                 className="text-red-500 text-sm mt-1 ml-1"
                                                 initial={{ opacity: 0, x: -10, height: 0 }}
                                                 animate={{ opacity: 1, x: 0, height: "auto" }}
@@ -370,7 +367,7 @@ const ContactForm = ({ isOpen, onClose }) => {
                                 {/* Submit Error */}
                                 <AnimatePresence>
                                     {errors.submit && (
-                                        <motion.p 
+                                        <motion.p
                                             className="text-red-500 text-sm text-center"
                                             initial={{ opacity: 0, y: -10 }}
                                             animate={{ opacity: 1, y: 0 }}
@@ -387,7 +384,7 @@ const ContactForm = ({ isOpen, onClose }) => {
                                     disabled={isLoading}
                                     className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white py-3 px-6 rounded-xl font-semibold shadow-lg transition-all duration-200 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden"
                                     variants={itemVariants}
-                                    whileHover={!isLoading ? { 
+                                    whileHover={!isLoading ? {
                                         scale: 1.05,
                                         boxShadow: "0 10px 25px rgba(34, 197, 94, 0.4)",
                                         y: -2
@@ -413,10 +410,10 @@ const ContactForm = ({ isOpen, onClose }) => {
                                 >
                                     {/* Button shine effect */}
                                     <div className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700"></div>
-                                    
+
                                     {isLoading ? (
                                         <>
-                                            <motion.div 
+                                            <motion.div
                                                 className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
                                                 animate={{ rotate: 360 }}
                                                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -451,25 +448,25 @@ const ContactForm = ({ isOpen, onClose }) => {
             {/* Enhanced Success Message */}
             <AnimatePresence>
                 {showSuccess && (
-                    <motion.div 
+                    <motion.div
                         className="fixed inset-0 flex flex-col justify-center items-center bg-black/70 backdrop-blur-sm z-50"
                         variants={backdropVariants}
                         initial="hidden"
                         animate="visible"
                         exit="exit"
                     >
-                        <motion.div 
+                        <motion.div
                             className="text-center p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl"
                             variants={successVariants}
                         >
                             <motion.div
                                 initial={{ scale: 0, rotate: -180 }}
                                 animate={{ scale: 1, rotate: 0 }}
-                                transition={{ 
-                                    type: "spring", 
-                                    stiffness: 200, 
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 200,
                                     damping: 15,
-                                    delay: 0.2 
+                                    delay: 0.2
                                 }}
                             >
                                 <motion.div
@@ -490,8 +487,8 @@ const ContactForm = ({ isOpen, onClose }) => {
                                     <FaCheckCircle className="text-green-400 text-7xl mb-6 mx-auto" />
                                 </motion.div>
                             </motion.div>
-                            
-                            <motion.h2 
+
+                            <motion.h2
                                 className="text-3xl font-bold mb-3 text-white"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -499,8 +496,8 @@ const ContactForm = ({ isOpen, onClose }) => {
                             >
                                 Message Sent! 🎉
                             </motion.h2>
-                            
-                            <motion.p 
+
+                            <motion.p
                                 className="text-xl text-gray-200 mb-2"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -508,8 +505,8 @@ const ContactForm = ({ isOpen, onClose }) => {
                             >
                                 Thanks for reaching out!
                             </motion.p>
-                            
-                            <motion.p 
+
+                            <motion.p
                                 className="text-gray-300"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
