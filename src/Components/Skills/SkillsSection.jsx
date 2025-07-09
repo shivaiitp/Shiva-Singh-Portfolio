@@ -97,7 +97,7 @@ export default function Skills() {
         >
           Skills
         </motion.h2>
-        <motion.div className="absolute left-1/2 bottom-0 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 rounded-full" initial={{ width: 0, x: "-50%" }} whileInView={{ width: "100%" }} transition={{ duration: 0.8, delay: 0.3 }} />
+        <motion.div className="absolute left-1/2 bottom-0 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 rounded-full" initial={{ width: 0, x: "-50%" }} viewport={{ once: true}} whileInView={{ width: "100%" }} transition={{ duration: 0.8, delay: 0.3 }} />
         <motion.div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-500/20 dark:bg-blue-400/20 rounded-full" animate={{ y: [0, -10, 0], opacity: [0.5, 1, 0.5] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} />
         <motion.div className="absolute -top-2 -right-6 w-6 h-6 bg-purple-500/20 dark:bg-purple-400/20 rounded-full" animate={{ y: [0, -15, 0], opacity: [0.3, 0.8, 0.3] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
       </motion.div>
@@ -112,7 +112,7 @@ export default function Skills() {
       <motion.div className="w-full max-w-7xl mb-16" variants={itemVariants}>
         <motion.h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-left mb-8 text-gray-800 dark:text-gray-200 relative" whileHover={{ x: 10 }} transition={{ type: "spring", stiffness: 300 }}>
           <span className="relative z-10">⚙️ Technical Skills</span>
-          <motion.div className="my-1 bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-400 dark:to-blue-400" initial={{ width: 0 }} whileInView={{ width: "100%" }} transition={{ duration: 0.8, delay: 0.2 }} />
+          <motion.div className="my-1 bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-400 dark:to-blue-400" initial={{ width: 0 }} viewport={{ once: true}} whileInView={{ width: "100%" }} transition={{ duration: 0.8, delay: 0.2 }} />
         </motion.h3>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 sm:gap-12">
@@ -154,7 +154,7 @@ export default function Skills() {
       <motion.div className="w-full max-w-7xl" variants={itemVariants}>
         <motion.h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-left mb-8 text-gray-800 dark:text-gray-200 relative" whileHover={{ x: 10 }} transition={{ type: "spring", stiffness: 300 }}>
           <span className="relative z-10">🤝 Soft Skills</span>
-          <motion.div className="my-1 bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-400 dark:to-blue-400" initial={{ width: 0 }} whileInView={{ width: "100%" }} transition={{ duration: 0.8, delay: 0.2 }} />
+          <motion.div className="my-1 bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-400 dark:to-blue-400" initial={{ width: 0 }} viewport={{ once: true}} whileInView={{ width: "100%" }} transition={{ duration: 0.8, delay: 0.2 }} />
         </motion.h3>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 sm:gap-12">

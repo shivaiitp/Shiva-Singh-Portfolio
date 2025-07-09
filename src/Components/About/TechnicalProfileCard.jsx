@@ -349,6 +349,7 @@ const TechnicalProfileCard = ({
         <motion.div
           className="absolute inset-0 bg-black/20 backdrop-blur-sm rounded-3xl flex items-center justify-center"
           initial={{ opacity: 0 }}
+          viewport={{ once: true}}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >

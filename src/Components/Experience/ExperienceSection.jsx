@@ -93,6 +93,7 @@ export default function Experience() {
         <motion.div
           className="absolute left-1/2 bottom-0 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 rounded-full"
           initial={{ width: 0, x: "-50%" }}
+          viewport={{ once: true}}
           whileInView={{ width: "100%" }}
           transition={{ duration: 0.8, delay: 0.3 }}
         />
@@ -111,6 +112,7 @@ export default function Experience() {
           <motion.div
             className="my-1 bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-400 dark:to-blue-400"
             initial={{ width: 0 }}
+            viewport={{ once: true}}
             whileInView={{ width: "100%" }}
             transition={{ duration: 0.8, delay: 0.2 }}
           />
@@ -134,6 +136,7 @@ export default function Experience() {
           <motion.div
             className="my-1 bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-400 dark:to-blue-400"
             initial={{ width: 0 }}
+            viewport={{ once: true}}
             whileInView={{ width: "100%" }}
             transition={{ duration: 0.8, delay: 0.2 }}
           />

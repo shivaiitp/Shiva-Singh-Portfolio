@@ -72,6 +72,7 @@ const EducationCard = ({
                     className="absolute -bottom-2 left-1/2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
                     initial={{ width: 0, x: "-50%" }}
                     whileInView={{ width: "60%" }}
+                    viewport={{ once: true}}
                     transition={{ duration: 0.8, delay: 0.5 }}
                 />
             </motion.h3>

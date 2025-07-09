@@ -137,6 +137,7 @@ function Home() {
                         className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter text-gray-900 dark:text-white"
                         initial={{ x: -50, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
+                        viewport={{ once: true}}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         <motion.span
@@ -256,6 +257,7 @@ function Home() {
                         scale: 1, 
                         opacity: 1
                     }}
+                    viewport={{ once: true}}
                     transition={{ 
                         delay: 1,
                         type: "spring",
@@ -344,6 +346,7 @@ function Home() {
                                         delay: 0 
                                     }
                                 }}
+                                viewport={{ once: true}}
                             >
                                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white/25 via-transparent to-transparent"></div>
                                 
@@ -386,6 +389,7 @@ function Home() {
                                                         delay: index * 0.05,
                                                         ease: "easeOut"
                                                     }}
+                                                    viewport={{ once: true}}
                                                 />
                                             ))}
                                         </>
