@@ -48,10 +48,10 @@ const technicalProfiles = [
 const educationData = [
   {
     title: "Graduation",
-    College: "Indian Institute of Technology Patna",
+    College: "Indian Institute of Technology Patna (IITP)",
     Course: "Bachelor's of Technology",
     Branch: "Electrical and Electronics Engineering",
-    Marks: <span>CGPA: 7.61 (Till 5<sup>th</sup> Sem)</span>,
+    Marks: <span>CGPA: 7.60 (Till 6<sup>th</sup> Sem)</span>,
     Year: "Duration: 2022 - 2026",
   },
   {

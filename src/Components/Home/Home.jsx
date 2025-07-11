@@ -71,7 +71,7 @@ function Home() {
     return (
         <motion.div
             id="Home"
-            className="text-gray-900 dark:text-white flex w-full min-h-screen flex-col lg:flex-row justify-center items-center lg:justify-between p-4 sm:p-6 md:p-10 lg:p-20 relative transition-all duration-500"
+            className="text-gray-900 dark:text-white flex w-full min-h-screen flex-col lg:flex-row justify-center items-center lg:justify-between mt-6 md:mt-0 p-4 sm:p-6 md:p-10 lg:p-20 relative transition-all duration-500"
             variants={containerVariants}
             initial="hidden"
             animate="visible"

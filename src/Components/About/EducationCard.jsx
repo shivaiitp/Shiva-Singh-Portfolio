@@ -107,11 +107,11 @@ const EducationCard = ({
                                 }}
                             >
 
-                                <item.icon size={20} />
+                                <item.icon size={18} />
                             </motion.div>
                         </motion.div>
 
-                        <span className="text-gray-700 dark:text-gray-300 text-lg md:text-lg font-medium flex-1">
+                        <span className="text-gray-700 dark:text-gray-300 text-base md:text-lg font-medium flex-1">
                             {item.text}
                         </span>
                     </motion.li>

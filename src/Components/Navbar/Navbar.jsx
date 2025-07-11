@@ -14,7 +14,8 @@ import {
 } from "@remixicon/react";
 import { motion, AnimatePresence } from "framer-motion";
 import LogoCard from "./LogoCard";
-import { useTheme } from "../ThemeContext"; 
+import { useTheme } from "../ThemeContext";
+
 
 const menuItems = [
     { name: "Home", icon: <RiHome2Line size={18} /> },
@@ -25,14 +26,17 @@ const menuItems = [
     { name: "Contact", icon: <RiMailLine size={18} /> },
 ];
 
+
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const { darkMode, toggleDarkMode } = useTheme(); 
+    const { darkMode, toggleDarkMode } = useTheme();
     const [activeSection, setActiveSection] = useState("Home");
     const [scrolled, setScrolled] = useState(false);
 
+
     // Calculate a dynamic offset based on screen size
     const scrollOffset = window.innerWidth < 768 ? -50 : -60;
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -42,6 +46,7 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+
     return (
         <>
             {/* Compact Centered Navbar */}
@@ -49,16 +54,16 @@ const Navbar = () => {
                 <motion.nav
                     className={`
                         transform transition-all duration-500
-                        md:w-[95%] md:max-w-6xl max-w-5xl w-[90%] 
+                        md:w-[95%] md:max-w-6xl max-w-5xl w-[90%]
                         `}
                     initial={{ y: -100, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: "easeIn" }}
                 >
-                    <div className="backdrop-blur-xl rounded-2xl border transition-all duration-500 px-6 py-3 
-                                   bg-white/60 dark:bg-gray-900/70 
-                                   border-gray-400/80 dark:border-white/10 
-                                   text-gray-800 dark:text-white shadow-2xl shadow-gray-500/20 dark:shadow-black/20">
+                    <div className="backdrop-blur-xl rounded-2xl border transition-all duration-500 px-6 py-3
+                                    bg-white/60 dark:bg-gray-900/70
+                                    border-gray-400/80 dark:border-white/10
+                                    text-gray-800 dark:text-white shadow-2xl shadow-gray-500/20 dark:shadow-black/20">
                         <div className="flex justify-between items-center">
                             {/* Logo */}
                             <motion.div
@@ -68,6 +73,7 @@ const Navbar = () => {
                             >
                                 <LogoCard />
                             </motion.div>
+
 
                             {/* Desktop Menu - Compact Pills */}
                             <motion.div
@@ -86,7 +92,7 @@ const Navbar = () => {
                                             offset={scrollOffset} // <-- FIX APPLIED HERE
                                             onSetActive={() => setActiveSection(item.name)}
                                             className={`
-                                                relative px-4 py-2 rounded-full text-lg font-medium cursor-pointer 
+                                                relative px-4 py-2 rounded-full text-lg font-medium cursor-pointer
                                                 transition-all duration-300 group overflow-hidden
                                                 ${activeSection === item.name
                                                     ? 'bg-green-500 text-white shadow-lg shadow-green-500/30'
@@ -106,6 +112,7 @@ const Navbar = () => {
                                     </motion.div>
                                 ))}
                             </motion.div>
+
 
                             {/* Right Controls */}
                             <div className="flex items-center gap-3">
@@ -141,6 +148,7 @@ const Navbar = () => {
                                     </AnimatePresence>
                                 </motion.button>
 
+
                                 {/* Mobile Menu Button */}
                                 <motion.button
                                     onClick={() => setMenuOpen(!menuOpen)}
@@ -165,6 +173,7 @@ const Navbar = () => {
                 </motion.nav>
             </div>
 
+
             {/* Mobile Menu */}
             <AnimatePresence>
                 {menuOpen && (
@@ -178,13 +187,14 @@ const Navbar = () => {
                             onClick={() => setMenuOpen(false)}
                         />
 
+
                         {/* Mobile Menu */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: -20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: -20 }}
                             transition={{ type: "spring", damping: 20, stiffness: 300 }}
-                            className="fixed top-20 left-1/2 transform -translate-x-1/2 w-[90%] max-w-sm z-50 lg:hidden backdrop-blur-xl rounded-2xl border p-6 bg-white/95 dark:bg-black/90 border-gray-200/50 dark:border-gray-800/50 shadow-2xl shadow-gray-500/20 dark:shadow-black/20"
+                            className="fixed top-20 left-4 right-4 mx-auto w-auto max-w-sm z-50 lg:hidden backdrop-blur-xl rounded-2xl border p-6 bg-white/95 dark:bg-black/90 border-gray-200/50 dark:border-gray-800/50 shadow-2xl shadow-gray-500/20 dark:shadow-black/20"
                         >
                             <div className="space-y-2">
                                 {menuItems.map((item, index) => (
@@ -220,5 +230,6 @@ const Navbar = () => {
         </>
     );
 };
+
 
 export default Navbar;

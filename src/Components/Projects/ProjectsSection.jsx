@@ -8,7 +8,7 @@ const projects = [
         title: "Bhav Book",
         description: "Bhav Book is a modern web app for tracking daily emotions with a clean, responsive UI. A user can enter their emotions and about their day, and the app generates a summary and provides insights over time using AI. It also suggests what to do next to overcome negative emotions.",
         image: "/Project/Bhav-Book.png", // Corrected Path
-        tech: ["React", "Node", "Express", "Tailwind CSS","HTML", "JavaScript", "Framer-Motion", "Firebase","MongoDB"],
+        tech: ["React", "Node", "Express", "Tailwind CSS","HTML", "JavaScript", "Framer-Motion", "Firebase","MongoDB", "Gemini AI"],
         sourceCode: "https://github.com/shivaiitp/Bhav-Book-App",
         link: "https://bhav-book.vercel.app/",
     },
