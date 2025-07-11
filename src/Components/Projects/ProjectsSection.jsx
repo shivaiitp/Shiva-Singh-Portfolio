@@ -1,47 +1,36 @@
 import React from "react";
-import ProjectCard from "./ProjectCard"; // Adjust this path to where you saved ProjectCard.jsx
+import ProjectCard from "./ProjectCard"; // This now imports the enhanced card
 import { motion } from "framer-motion";
 
-// --- UPDATED DATA: Added 'image' property ---
+// --- Project Data with Corrected Paths ---
 const projects = [
     {
+        title: "Bhav Book",
+        description: "Bhav Book is a modern web app for tracking daily emotions with a clean, responsive UI. A user can enter their emotions and about their day, and the app generates a summary and provides insights over time using AI. It also suggests what to do next to overcome negative emotions.",
+        image: "/Project/Bhav-Book.png", // Corrected Path
+        tech: ["React", "Node", "Express", "Tailwind CSS","HTML", "JavaScript", "Framer-Motion", "Firebase","MongoDB"],
+        sourceCode: "https://github.com/shivaiitp/Bhav-Book-App",
+        link: "https://bhav-book.vercel.app/",
+    },
+
+    {
         title: "Job Portal",
-        description: (
-            <>
-                A full-stack web application connecting employers and job seekers. Built with the MERN stack, it features role-based authentication, job management, and a responsive UI using Tailwind CSS and Redux.
-            </>
-        ),
-        image: "/Project/job-portal.png", // Replace with your image path
-        tech: ["React", "Express", "MongoDB", "Tailwind CSS", "Redux", "JWT"],
+        description: "A full-stack web app connecting employers and job seekers, built with the MERN stack and featuring role-based authentication.",
+        image: "/Project/job-portal.png", // Corrected Path
+        tech: ["React", "Express", "MongoDB","JavaScript","HTML", "Tailwind CSS", "Redux", "JWT"],
         sourceCode: "https://github.com/shivaiitp/Job-Portal",
         link: "https://job-portal-oc1k.onrender.com/",
     },
     {
-        title: "Blaze Posts",
-        description: (
-            <>
-                A social media app for creating and sharing visually appealing posts. Features rich text editing, image uploads, and full post management, powered by React for the frontend and Appwrite for the backend.
-            </>
-        ),
-        image: "/images/blaze-posts.png", // Replace with your image path
-        tech: ["React", "Redux", "Appwrite", "Tailwind CSS", "Vite"],
-        sourceCode: "https://github.com/shivaiitp/Blaze-Posts-Project",
-    },
-    {
         title: "Flight Ticket Booking System",
-        description: (
-            <>
-                A comprehensive console-based airline reservation system developed in C. Demonstrates file handling, dynamic memory allocation, and data structures in a robust system-level programming project.
-            </>
-        ),
-        image: "/images/flight-booking.png", // Replace with your image path
+        description: "A comprehensive console-based airline reservation system in C, demonstrating file handling and data structures.",
+        image: "/Project/flight-booking.jpg", // Corrected Path
         tech: ["C", "File Handling", "Data Structures", "Algorithms"],
         sourceCode: "https://github.com/shivaiitp/Flight-TIcket-Booking-system",
     }
 ];
 
 export default function Projects() {
-  // --- Animation Variants (for consistency) ---
   const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } } };
   const itemVariants = { hidden: { y: 50, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100, damping: 15 } } };
   const titleVariants = { hidden: { scale: 0.8, opacity: 0 }, visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 200, damping: 20 } } };
@@ -56,7 +45,7 @@ export default function Projects() {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
     >
-      {/* Enhanced Section Title */}
+      {/* Section Title */}
       <motion.div className="relative mb-12" variants={titleVariants}>
         <motion.h2
           className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent mb-4"
@@ -76,7 +65,7 @@ export default function Projects() {
           whileHover={{ x: 10 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <span className="relative z-10">💻 My Projects</span>
+          <span className="relative z-10">💻 Development Projects</span>
           <motion.div className="my-1 bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-400 dark:to-blue-400" initial={{ width: 0 }} viewport={{ once: true}} whileInView={{ width: "100%" }} transition={{ duration: 0.8, delay: 0.2 }} />
         </motion.h3>
 
@@ -90,4 +79,3 @@ export default function Projects() {
     </motion.section>
   );
 }
-

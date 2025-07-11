@@ -10,10 +10,11 @@ function ExperienceCard({ experience }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      // initial={{ y: 20, opacity: 0 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+      // transition={{ duration: 0.8, delay: 0.2 }}
+      // transition={{ stiffness: 100, damping: 20 }}
       className="group relative w-full overflow-hidden rounded-2xl p-6
                  border transition-all duration-300
                  bg-white/50 dark:bg-gray-900
@@ -38,7 +39,7 @@ function ExperienceCard({ experience }) {
             {/* --- NEW: Container for Company Name and Link Icon --- */}
             <div className="flex items-center gap-2">
               <p className="text-md text-left font-medium text-gray-800 dark:text-gray-300">
-                {company}
+                @ {company}
               </p>
               {/* This link icon only renders if a 'link' prop exists */}
               {link && (

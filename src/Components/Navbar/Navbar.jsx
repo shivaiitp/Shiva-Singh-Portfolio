@@ -55,7 +55,10 @@ const Navbar = () => {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: "easeIn" }}
                 >
-                    <div className="backdrop-blur-xl rounded-2xl border transition-all duration-500 px-6 py-3 bg-white/90 dark:bg-black/80 border-gray-200/50 dark:border-gray-800/50 text-gray-800 dark:text-white shadow-2xl shadow-gray-500/20 dark:shadow-black/20">
+                    <div className="backdrop-blur-xl rounded-2xl border transition-all duration-500 px-6 py-3 
+                                   bg-white/60 dark:bg-gray-900/70 
+                                   border-gray-400/80 dark:border-white/10 
+                                   text-gray-800 dark:text-white shadow-2xl shadow-gray-500/20 dark:shadow-black/20">
                         <div className="flex justify-between items-center">
                             {/* Logo */}
                             <motion.div

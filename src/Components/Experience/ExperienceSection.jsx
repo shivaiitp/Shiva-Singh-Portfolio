@@ -31,13 +31,14 @@ const pors = [
     duration: "March 2024 - March 2025",
     description:
       "Worked in the sponsorship and marketing committee. Communicated with multiple firms for sponsorships and efficiently managed financial aspects during the fest.",
-    link: "https://celesta.org.in/", // Example link added
+    link: "https://celesta.iitp.ac.in/", // Example link added
   },
   {
     company: "Syahi - The Literary Club of IIT Patna",
-    role: "Sub-Coordinator",
+    role: "Sub-Coordinator ",
     duration: "March 2023 - March 2024",
     description: "Managed various literary events with the team.",
+    link: "https://www.instagram.com/syahi.iitp/",
   },
 ];
 

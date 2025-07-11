@@ -210,7 +210,7 @@ const TechnicalProfileCard = ({
         className="flex items-center justify-between mb-6"
         variants={itemVariants}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1 md:gap-3">
           <motion.div
             className="relative"
             whileHover={{ rotate: 360, scale: 1.1 }}
@@ -238,7 +238,7 @@ const TechnicalProfileCard = ({
           </motion.div>
           
           <motion.span 
-            className="capitalize text-xl md:text-2xl font-semibold"
+            className="capitalize text-lg md:text-2xl font-semibold"
             variants={itemVariants}
             animate={{
               textShadow: [

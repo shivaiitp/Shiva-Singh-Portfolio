@@ -55,7 +55,7 @@ const HobbyCard = ({ icon, text, index }) => { // Accept index to vary animation
         text-center"
     >
       <span className="text-5xl mb-4">{icon}</span>
-      <h3 className=" text-md md:text-lg font-semibold text-gray-800 dark:text-white">
+      <h3 className="text-md md:text-lg font-semibold text-gray-800 dark:text-white">
         {text}
       </h3>
     </motion.div>
@@ -79,11 +79,11 @@ const Hobbies = () => {
   };
 
   return (
-    <section className="py-2 px-4">
+    <section>
       
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <p className="mb-4 text-lg text-gray-600 dark:text-gray-300">
+        <div className="text-center mb-8 md:mb-10">
+          <p className="mb-0 md:mb-4 text-lg text-gray-600 dark:text-gray-300">
             Things I love to do in my free time.
           </p>
         </div>

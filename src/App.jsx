@@ -4,7 +4,7 @@ import GlobalBackground from './Components/GlobalBackground'; // Add this import
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/Home/Home';
 import About from "./Components/About/AboutSection";
-import ContactSection from "./Components/ContactSection";
+import ContactSection from "./Components/Contact/ContactSection";
 import Experience from "./Components/Experience/ExperienceSection";
 import Footer from "./Components/Footer";
 import Projects from "./Components/Projects/ProjectsSection";
