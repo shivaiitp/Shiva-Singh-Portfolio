@@ -1,64 +1,62 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
+// --- Animated Background ---
+const MemoizedAnimatedBackground = React.memo(() => {
+    const fixedElements = useMemo(() => [
+        { id: 'fixed-1', symbol: '{ }', className: "absolute top-[15%] right-[5%] text-5xl text-green-600/30 dark:text-green-400/15 hidden sm:block", duration: 20 },
+        { id: 'fixed-2', symbol: '[]', className: "absolute top-[15%] left-[5%] text-5xl text-cyan-600/30 dark:text-cyan-400/15 hidden md:block", duration: 35 },
+        { id: 'fixed-3', symbol: '</>', className: "absolute bottom-[35%] right-[15%] text-4xl text-blue-600/30 dark:text-blue-400/15 hidden sm:block", duration: 25 },
+        { id: 'fixed-4', symbol: '( )', className: "absolute top-[55%] left-[2%] text-5xl text-purple-600/30 dark:text-purple-400/15 hidden sm:block", duration: 30 },
+        { id: 'fixed-5', symbol: '&&', className: "absolute bottom-[15%] left-[12%] text-3xl text-red-600/30 dark:text-red-400/15 hidden sm:block", duration: 28 },
+        { id: 'fixed-6', symbol: '!= ', className: "absolute top-[40%] right-[10%] text-4xl text-pink-600/30 dark:text-pink-400/15 hidden md:block", duration: 32 },
+        { id: 'fixed-6', symbol: '## ', className: "absolute top-[40%] left-[10%] text-4xl text-pink-600/30 dark:text-pink-400/15 hidden md:block", duration: 32 },
+        { id: 'fixed-7', symbol: '%%', className: "absolute bottom-[37%] left-[15%] text-4xl text-yellow-600/30 dark:text-yellow-400/15 hidden lg:block", duration: 29 },
+        { id: 'fixed-9', symbol: '//', className: "absolute bottom-[5%] left-[5%] text-4xl text-cyan-600/30 dark:text-cyan-400/15 hidden sm:block", duration: 33 },
+        { id: 'fixed-11', symbol: '<=', className: "absolute bottom-[10%] right-[25%] text-3xl text-indigo-600/30 dark:text-indigo-400/15 hidden sm:block", duration: 31 },
+        { id: 'fixed-12', symbol: '^^', className: "absolute bottom-[4%] right-[10%] text-5xl text-teal-600/30 dark:text-teal-400/15 hidden sm:block", duration: 30 }
+    ], []);
+
+    return (
+        <div className="absolute inset-0 pointer-events-none z-0">
+            <div className="absolute inset-0 bg-grid-pattern opacity-25 dark:opacity-15 z-0" />
+            {fixedElements.map((element) => (
+                <motion.div
+                    key={element.id}
+                    className={`${element.className} font-mono z-10`}
+                    animate={{ rotate: 360 }}
+                    transition={{
+                        duration: element.duration,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                >
+                    {element.symbol}
+                </motion.div>
+            ))}
+        </div>
+    );
+});
+
+// --- Global Background Wrapper ---
 const GlobalBackground = ({ children, variant = "default" }) => {
-  const backgroundVariants = {
-    default: "bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-black",
-    hero: "bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-black",
-    section: "bg-white dark:bg-gray-900"
-  };
+    const backgroundClass = useMemo(() => {
+        const variants = {
+            default: "bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-black",
+            hero: "bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-black",
+            section: "bg-white dark:bg-gray-900"
+        };
+        return variants[variant] || variants.default;
+    }, [variant]);
 
-  return (
-    <div className={`relative w-full min-h-screen ${backgroundVariants[variant]} transition-all duration-500 overflow-hidden`}>
-      {/* Enhanced Animated Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        
-        {/* Static Grid Pattern - Fixed opacity for better visibility */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-50 dark:opacity-40" />
-
-        {/* Enhanced Floating Code Symbols with More Variety */}
-        {[
-          { symbol: '{ }', color: 'text-green-500/40 dark:text-green-400/25' },
-          { symbol: '</>', color: 'text-blue-500/40 dark:text-blue-400/25' },
-          { symbol: '( )', color: 'text-purple-500/40 dark:text-purple-400/25' },
-          { symbol: '[ ]', color: 'text-cyan-500/40 dark:text-cyan-400/25' },
-          { symbol: '< >', color: 'text-pink-500/40 dark:text-pink-400/25' },
-          { symbol: '/* */', color: 'text-yellow-500/40 dark:text-yellow-400/25' },
-          { symbol: '=>', color: 'text-indigo-500/40 dark:text-indigo-400/25' },
-          { symbol: '&&', color: 'text-red-500/40 dark:text-red-400/25' }
-        ].map((item, i) => (
-          <motion.div
-            key={`code-${i}`}
-            className={`absolute ${item.color} font-mono text-2xl md:text-4xl lg:text-5xl font-bold`}
-            style={{
-              left: `${10 + (i * 12)}%`,
-              top: `${15 + (i % 3) * 30}%`,
-            }}
-            animate={{
-              y: [0, -50, 0],
-              opacity: [0.2, 0.7, 0.2],
-              rotate: [0, 10, -10, 0],
-              scale: [1, 1.4, 1],
-              x: [0, (Math.random() - 0.5) * 20]
-            }}
-            transition={{
-              duration: 8 + i * 2,
-              repeat: Infinity,
-              delay: i * 1.5,
-              ease: "easeInOut"
-            }}
-          >
-            {item.symbol}
-          </motion.div>
-        ))}
-      </div>
-      
-      {/* Content */}
-      <div className="relative z-10">
-        {children}
-      </div>
-    </div>
-  );
+    return (
+        <div className={`relative w-full min-h-screen ${backgroundClass} transition-colors duration-300 overflow-hidden`}>
+            <MemoizedAnimatedBackground />
+            <div className="relative z-20">
+                {children}
+            </div>
+        </div>
+    );
 };
 
-export default GlobalBackground;
+export default React.memo(GlobalBackground);

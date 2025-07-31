@@ -1,79 +1,54 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
-// Define animation variants for a cleaner component structure
+// --- ENHANCEMENT: New 3D variant for a unique entrance animation ---
 const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } },
-};
-
-const overlayVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.4, ease: 'easeInOut' } },
+  hidden: { opacity: 0, rotateY: -100, x: -50 },
+  visible: { 
+    opacity: 1, 
+    rotateY: 0, 
+    x: 0,
+    transition: { type: 'smooth', stiffness: 40, damping: 15, duration: 1.0 } 
+  },
 };
 
 function ProjectCard({ title, description, image, tech, sourceCode, link }) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <motion.div
       variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl
+      // The parent section's stagger applies to the 'visible' state
+      className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl
                  bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg
                  border border-gray-200/50 dark:border-white/10 shadow-lg"
+      style={{ transformStyle: "preserve-3d" }} // Enable 3D transforms
     >
-      {/* =================================== */}
       {/* ========== IMAGE SECTION ========== */}
-      {/* =================================== */}
-      <div
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="relative h-52 w-full overflow-hidden cursor-pointer"
-      >
-        {/* The Project Image with Zoom & Blur Effect */}
-        <motion.img
+      <div className="relative h-52 w-full overflow-hidden cursor-pointer">
+        {/* --- OPTIMIZATION: Using group-hover for cleaner, state-less animation --- */}
+        <img
           src={image}
           alt={title}
-          className="h-full w-full object-cover"
-          animate={{
-            scale: isHovered ? 1.15 : 1,
-            filter: isHovered ? 'blur(4px)' : 'blur(0px)',
-          }}
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          className="h-full w-full object-cover transition-all duration-500 ease-in-out
+                     group-hover:scale-110 group-hover:blur-sm"
         />
-
-        {/* The Description Overlay */}
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              variants={overlayVariants}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              className="absolute inset-0 flex items-center justify-center bg-black/70 p-4"
-            >
-              <p className="text-center text-sm text-gray-200 leading-relaxed">
-                {description}
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div
+          className="absolute inset-0 flex items-center justify-center p-4
+                     bg-black/70 opacity-0 group-hover:opacity-100
+                     transition-opacity duration-500 ease-in-out"
+        >
+          <p className="text-center text-sm text-gray-200 leading-relaxed">
+            {description}
+          </p>
+        </div>
       </div>
 
-      {/* =================================== */}
       {/* ========== CONTENT SECTION ========== */}
-      {/* =================================== */}
       <div className="flex flex-1 flex-col p-4">
-        {/* Title */}
         <h3 className="text-xl font-bold text-left text-gray-900 dark:text-white">
           {title}
         </h3>
 
-        {/* Tech Stack */}
         <div className="mt-3 flex flex-wrap gap-2">
           {tech.map((techItem) => (
             <span
@@ -85,7 +60,6 @@ function ProjectCard({ title, description, image, tech, sourceCode, link }) {
           ))}
         </div>
 
-        {/* Links (Pushed to the bottom) */}
         <div className="mt-auto pt-4 flex justify-end items-center gap-4">
           {sourceCode && (
             <motion.a
@@ -93,8 +67,8 @@ function ProjectCard({ title, description, image, tech, sourceCode, link }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Source Code"
-              whileHover={{ scale: 1.1, color: '#22d3ee' }} // cyan-400
-              className="text-gray-500 dark:text-gray-400 transition-colors"
+              whileHover={{ scale: 1.15, color: '#22d3ee' }}
+              className="text-gray-500 dark:text-gray-400"
             >
               <FiGithub size={22} />
             </motion.a>
@@ -105,8 +79,8 @@ function ProjectCard({ title, description, image, tech, sourceCode, link }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Live Demo"
-              whileHover={{ scale: 1.1, color: '#22d3ee' }} // cyan-400
-              className="text-gray-500 dark:text-gray-400 transition-colors"
+              whileHover={{ scale: 1.15, color: '#22d3ee' }}
+              className="text-gray-500 dark:text-gray-400"
             >
               <FiExternalLink size={22} />
             </motion.a>
@@ -117,4 +91,4 @@ function ProjectCard({ title, description, image, tech, sourceCode, link }) {
   );
 }
 
-export default ProjectCard;
+export default React.memo(ProjectCard);

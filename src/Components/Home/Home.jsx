@@ -112,7 +112,12 @@ function Home() {
             {/* RIGHT HALF: Image and Social Icons */}
             <div className="w-full lg:w-1/2 flex justify-center items-center relative h-[300px] sm:h-[400px] md:h-[500px] mt-8 lg:mt-0">
                 <motion.div className="absolute w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-2 border-green-500/50 dark:border-green-400/30" animate={{ scale: [1, 1.02, 1], rotate: [0, 360] }} transition={{ scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 40, repeat: Infinity, ease: "linear" } }} />
-                <motion.img src={MyImg} alt="Shiva Singh" className="w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full object-cover shadow-2xl border-4 border-green-500/50 dark:border-green-400/30 relative z-10" initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} viewport={{ once: true}} transition={{ delay: 1, type: "spring", stiffness: 200, damping: 20 }} />
+                <motion.img src={MyImg} alt="Shiva Singh" 
+                className="w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full object-cover shadow-2xl border-4 border-green-500/50 dark:border-green-400/30 relative z-10" 
+                initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} viewport={{ once: true}} 
+                transition={{ delay: 1, type: "spring", stiffness: 200, damping: 20 }} 
+                loading='lazy'
+                />
 
                 {portfolioContent.socialIcons.map((item, i) => {
                     const radius = typeof window !== 'undefined' ? (window.innerWidth < 640 ? 120 : window.innerWidth < 768 ? 150 : 180) : 180;
@@ -168,7 +173,6 @@ function Home() {
                                                     animate={{ scale: [0, 1.5, 0], opacity: [0, 1, 0], x: [0, Math.cos(index * 45 * Math.PI / 180) * 25], y: [0, Math.sin(index * 45 * Math.PI / 180) * 25] }}
                                                     exit={{ scale: 0, opacity: 0 }}
                                                     transition={{ duration: 0.8, delay: index * 0.05, ease: "easeOut" }}
-                                                    // --- FIX 2: REMOVED `viewport` prop ---
                                                 />
                                             ))}
                                         </>
@@ -178,23 +182,6 @@ function Home() {
                         </motion.div>
                     );
                 })}
-            </div>
-
-            {/* Floating code elements */}
-            <div className="absolute top-[15%] right-[5%] text-3xl md:text-5xl font-mono text-green-600/30 dark:text-green-400/15 hidden sm:block">
-                <motion.div animate={{ rotate: [0, 360], scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} whileHover={{ scale: 1.5, color: "#059669", transition: { duration: 0.3 } }}>
-                    {'{ }'}
-                </motion.div>
-            </div>
-            <div className="absolute bottom-[35%] right-[15%] text-2xl md:text-3xl font-mono text-blue-600/30 dark:text-blue-400/15 hidden sm:block">
-                <motion.div animate={{ rotate: [0, 360], scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} whileHover={{ scale: 1.4, color: "#2563eb", transition: { duration: 0.3 } }}>
-                    {'</>'}
-                </motion.div>
-            </div>
-            <div className="absolute top-[55%] left-[2%] text-xl md:text-2xl font-mono text-purple-600/30 dark:text-purple-400/15 hidden sm:block">
-                <motion.div animate={{ rotate: [0, 360], scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} whileHover={{ scale: 1.3, color: "#7c3aed", transition: { duration: 0.3 } }}>
-                    {'( )'}
-                </motion.div>
             </div>
         </motion.div>
     );
