@@ -30,7 +30,7 @@ function Home() {
     const [showForm, setShowForm] = useState(false);
     const [hoveredIcon, setHoveredIcon] = useState(null);
 
-    const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } } };
+    const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } };
     const itemVariants = { hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100, damping: 12 } } };
     const buttonVariants = { hidden: { scale: 0, opacity: 0 }, visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 200, damping: 15 } }, hover: { scale: 1.1, boxShadow: "0 10px 30px rgba(34, 197, 94, 0.3)", transition: { type: "spring", stiffness: 400, damping: 10 } }, tap: { scale: 0.95 } };
 

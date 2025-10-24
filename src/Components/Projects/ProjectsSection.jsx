@@ -30,7 +30,7 @@ const projects = [
 ];
 
 // --- Animation Variants (No changes needed) ---
-const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.2 } } };
+const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } };
 const titleVariants = { hidden: { scale: 0.8, opacity: 0 }, visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 200, damping: 20 } } };
 
 function Projects() {
@@ -54,17 +54,21 @@ function Projects() {
       {/* Main Content Area */}
       <motion.div className="w-full max-w-7xl" variants={containerVariants}>
         <motion.h3
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-left mb-8 text-gray-800 dark:text-gray-200 relative"
-          variants={titleVariants}
-        >
-          <span className="relative z-10">💻 Development Projects</span>
-          <motion.div className="my-1 bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-400 dark:to-blue-400" initial={{ width: 0 }} whileInView={{ width: "100%" }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} />
-        </motion.h3>
-
-        {/* --- ENHANCEMENT: Added 'perspective' style to enable 3D animations --- */}
+        className="text-2xl sm:text-3xl lg:text-4xl font-bold text-left mb-8 text-gray-800 dark:text-gray-200 relative"
+        whileHover={{ x: 10 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      >
+        <span className="relative z-10">💻 Development Projects</span>
+        <motion.div
+          className="my-1 bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-400 dark:to-blue-400"
+          initial={{ width: 0 }}
+          whileInView={{ width: "100%" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        />
+      </motion.h3>
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          style={{ perspective: "1200px" }}
           variants={containerVariants}
         >
             {projects.map((project) => (
@@ -72,6 +76,7 @@ function Projects() {
             ))}
         </motion.div>
       </motion.div>
+      <h3 className="mt-8 text-xl ">Find More on <a href="https://github.com/shivaiitp" target="_blank" rel="noopener noreferrer">GitHub</a></h3>
     </motion.section>
   );
 }

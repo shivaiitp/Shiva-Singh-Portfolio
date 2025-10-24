@@ -46,13 +46,9 @@ const EducationCard = ({
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            whileHover={{transition: { duration: 0.3 } }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ transition: { duration: 0.3 } }}
             className="relative h-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 p-8 max-w-md w-full text-gray-800 dark:text-white overflow-hidden group"
         >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-purple-50/50 dark:from-blue-900/20 dark:via-transparent dark:to-purple-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
-            <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-cyan-400/10 to-blue-400/10 rounded-full blur-lg group-hover:scale-125 transition-transform duration-500" />
             <motion.h3 className="text-2xl mt-0 md:text-3xl font-bold text-center mb-2 relative z-10" variants={itemVariants}>
                 {title}
                 <motion.div
@@ -63,9 +59,9 @@ const EducationCard = ({
                     transition={{ duration: 0.8, delay: 0.5 }}
                 />
             </motion.h3>
-            <motion.ul className="text-left mt-6 text-sm md:text-base relative z-10 cursor-pointer">
+            <ul className="text-left mt-6 text-sm md:text-base relative z-10 cursor-pointer">
                 {details.map((item, index) => (
-                    <motion.li
+                    <li
                         key={index}
                         variants={itemVariants}
                         className="flex items-center gap-3 mt-2 md:mt-4 rounded-xl hover:bg-gray-50/50 dark:hover:bg-gray-700/30 transition-all duration-500 group/item"
@@ -78,9 +74,9 @@ const EducationCard = ({
                         <span className="text-gray-700 dark:text-gray-300 text-base md:text-lg font-medium flex-1">
                             {item.text}
                         </span>
-                    </motion.li>
+                    </li>
                 ))}
-            </motion.ul>
+            </ul>
             
         </motion.div>
     );

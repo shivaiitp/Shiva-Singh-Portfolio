@@ -47,10 +47,7 @@ const experienceData = [
 ];
 
 // --- Animation Variants (defined once) ---
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
-};
+const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } };
 
 const titleVariants = {
   hidden: { scale: 0.8, opacity: 0 },

@@ -20,7 +20,7 @@ updated with the latest industry trends. My commitment to continuous learning dr
 emerging technologies, refine my skills, and push the boundaries of what's possible in modern web development.`;
 
 const technicalProfiles = [
-  { platform: "leetcode", username: "shivu_iitp", profileLink: "https://leetcode.com/shivu_iitp", fallbackStats: { totalSolved: 466, rating: 1934 } },
+  { platform: "leetcode", username: "shivu_iitp", profileLink: "https://leetcode.com/shivu_iitp", fallbackStats: { totalSolved: "700 +", rating: 1997 } },
   { platform: "codeforces", username: "shiva_iitp22", profileLink: "https://codeforces.com/profile/shiva_iitp22", fallbackStats: { totalSolved: 212, rating: 1438 } },
   { platform: "geeksforgeeks", username: "shivaigz33", profileLink: "https://auth.geeksforgeeks.org/user/shivaigz33/", fallbackStats: { totalSolved: 222, rating: "652" } },
 ];
@@ -37,7 +37,7 @@ const lang = [
 ];
 
 // --- Animation Variants (no changes needed here) ---
-const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } } };
+const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } };
 const itemVariants = { hidden: { y: 50, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100, damping: 15 } } };
 const titleVariants = { hidden: { scale: 0.8, opacity: 0 }, visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 200, damping: 20 } } };
 const cardVariants = { hidden: { y: 30, opacity: 0, scale: 0.9 }, visible: { y: 0, opacity: 1, scale: 1, transition: { type: "spring", stiffness: 120, damping: 15 } } };
@@ -49,12 +49,12 @@ const FallbackLoader = () => (
 );
 
 const languageBoxVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { type: "spring", stiffness: 100, damping: 15 },
-    },
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 15 },
+  },
 };
 
 function About() {
@@ -69,7 +69,7 @@ function About() {
     >
       {/* Section Title */}
       <motion.div className="relative mb-12" variants={titleVariants}>
-        <motion.h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent mb-4" animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }} transition={{ duration: 5, repeat: Infinity, ease: "linear" }} style={{ backgroundSize: "200% 100%" }}>
+        <motion.h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent mb-4" animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }} style={{ backgroundSize: "200% 100%" }}>
           About Me
         </motion.h2>
         <motion.div className="absolute left-1/2 bottom-0 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 rounded-full" initial={{ width: 0, x: "-50%" }} whileInView={{ width: "100%" }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.3 }} />
@@ -79,7 +79,6 @@ function About() {
       <motion.div className="max-w-6xl mb-16" variants={itemVariants}>
         <div className="text-justify text-base sm:text-lg lg:text-xl leading-relaxed text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-300 dark:border-gray-700 shadow-xl relative overflow-hidden">
           <div className="absolute inset-0 bg-white dark:bg-gray-800" />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-purple-50/50 dark:from-blue-900/20 dark:via-transparent dark:to-purple-900/20" />
           <InteractiveText text={introText} className="relative z-10" />
         </div>
       </motion.div>
@@ -135,15 +134,15 @@ function About() {
         </motion.h3>
 
         {/* --- FIX: Map over the 'lang' array to display each language --- */}
-        <motion.div 
-                    className="flex flex-col sm:flex-row items-center justify-center gap-8"
-                    variants={containerVariants} // This will stagger the children
-                >
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-8"
+          variants={containerVariants} // This will stagger the children
+        >
           {lang.map((language) => (
-            <motion.div 
-            key={language.name} 
-            className="text-center p-6 rounded-2xl border border-gray-300 dark:border-gray-700 cursor-pointer  hover:border-green-400 dark:hover:border-green-400 transition-colors duration-300 w-full sm:w-64 bg-white/50 dark:bg-gray-800/50 shadow-lg"
-            variants={languageBoxVariants}>
+            <motion.div
+              key={language.name}
+              className="text-center p-6 rounded-2xl border border-gray-300 dark:border-gray-700 cursor-pointer  hover:border-green-400 dark:hover:border-green-400 transition-colors duration-300 w-full sm:w-64 bg-white/50 dark:bg-gray-800/50 shadow-lg"
+              variants={languageBoxVariants}>
               <h4 className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                 {language.name}
               </h4>

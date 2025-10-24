@@ -1,7 +1,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 
-// --- Animation transition moved outside component ---
+
 const wordTransition = {
   type: 'spring',
   stiffness: 300,
@@ -14,7 +14,6 @@ function InteractiveText({ text, className }) {
   const containerRef = useRef(null);
 
   const handleMouseMove = (e) => {
-    // This logic is efficient enough, no need for debouncing which might feel laggy.
     if (containerRef.current) {
       const elementAtPoint = document.elementFromPoint(e.clientX, e.clientY);
       if (elementAtPoint?.dataset?.wordIndex) {
@@ -29,7 +28,6 @@ function InteractiveText({ text, className }) {
     setHoveredWordIndex(null);
   };
 
-  // useMemo ensures this splitting logic only runs if the 'text' prop changes.
   const words = useMemo(() => text.split(/(\s+)/), [text]);
 
   return (

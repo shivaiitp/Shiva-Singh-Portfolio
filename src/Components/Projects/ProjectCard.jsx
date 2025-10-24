@@ -4,7 +4,7 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
 // --- ENHANCEMENT: New 3D variant for a unique entrance animation ---
 const cardVariants = {
-  hidden: { opacity: 0, rotateY: -100, x: -50 },
+  hidden: { opacity: 0},
   visible: { 
     opacity: 1, 
     rotateY: 0, 
@@ -23,7 +23,6 @@ function ProjectCard({ title, description, image, tech, sourceCode, link }) {
                  border border-gray-200/50 dark:border-white/10 shadow-lg"
       style={{ transformStyle: "preserve-3d" }} // Enable 3D transforms
     >
-      {/* ========== IMAGE SECTION ========== */}
       <div className="relative h-52 w-full overflow-hidden cursor-pointer">
         {/* --- OPTIMIZATION: Using group-hover for cleaner, state-less animation --- */}
         <img
@@ -42,8 +41,7 @@ function ProjectCard({ title, description, image, tech, sourceCode, link }) {
           </p>
         </div>
       </div>
-
-      {/* ========== CONTENT SECTION ========== */}
+      
       <div className="flex flex-1 flex-col p-4">
         <h3 className="text-xl font-bold text-left text-gray-900 dark:text-white">
           {title}

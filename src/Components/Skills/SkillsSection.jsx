@@ -4,40 +4,50 @@ import SkillCategory from "./SkillCategory"; // Import the new component
 
 // --- Centralized Data Setup ---
 const getImage = (imageName) => `/skills/${imageName}`;
-
 const skillsData = [
     {
         title: "Programming Languages",
         skills: [
-            { name: "C++", logo: getImage("Cpp.svg"), level: 90 },
+            { name: "C++", logo: getImage("Cpp.svg"), level: 95 },
             { name: "JavaScript", logo: getImage("JavaScript.svg"), level: 80 },
             { name: "Python", logo: getImage("Python.svg"), level: 70 },
+        ],
+    },
+    {
+        title: "Core Concepts",
+        skills: [
+            { name: "Data Structures", logo: getImage("Data_Structure.svg"), level: 80 },
+            { name: "Algorithms", logo: getImage("Algorithms.svg"), level: 75 },
+            { name: "Object-Oriented Programming", logo: getImage("oop.svg"), level: 85 },
+            { name: "Operating Systems", logo: getImage("Operating_Systems.svg"), level: 80 },
+            { name: "Database Management System", logo: getImage("DBMS.svg"), level: 70 },
+            { name: "System Design", logo: getImage("System_Design.svg"), level: 60 },
         ],
     },
     {
         title: "Development",
         skills: [
             { name: "HTML5", logo: getImage("HTML5.svg"), level: 95 },
-            { name: "CSS3", logo: getImage("CSS3.svg"), level: 80 },
+            { name: "CSS3", logo: getImage("CSS3.svg"), level: 60 },
             { name: "React", logo: getImage("React.svg"), level: 80 },
             { name: "Tailwind CSS", logo: getImage("Tailwind_CSS.svg"), level: 85 },
-            { name: "Node.js", logo: getImage("Node_js.svg"), level: 70 },
-            { name: "Express.js", logo: getImage("Express.svg"), level: 70 },
+            { name: "Node.js", logo: getImage("Node_js.svg"), level: 80 },
+            { name: "Express.js", logo: getImage("Express.svg"), level: 80 },
         ],
     },
     {
         title: "Databases",
         skills: [
             { name: "MongoDB", logo: getImage("MongoDB.svg"), level: 80 },
-            { name: "MySQL", logo: getImage("MySQL.svg"), level: 70 },
+            { name: "MySQL", logo: getImage("MySQL.svg"), level: 50 },
         ],
     },
     {
         title: "Machine Learning",
         pathColor: "#F97316", // Orange
         skills: [
-            { name: "Scikit-learn", logo: getImage("Scikit_learn.svg"), level: 70 },
-            { name: "Pandas", logo: getImage("Pandas.svg"), level: 75 },
+            { name: "Scikit-learn", logo: getImage("Scikit_learn.svg"), level: 40 },
+            { name: "Pandas", logo: getImage("Pandas.svg"), level: 70 },
             { name: "NumPy", logo: getImage("NumPy.svg"), level: 70 },
             { name: "Supervised", logo: getImage("Supervised.png"), level: 50 },
             { name: "Unsupervised", logo: getImage("Unsupervised.png"), level: 50 },
@@ -72,18 +82,6 @@ const titleVariants = { hidden: { scale: 0.8, opacity: 0 }, visible: { scale: 1,
 function Skills() {
     return (
         <>
-            {/* Define CSS variables for theming, avoiding prop drilling */}
-            <style>{`
-                :root {
-                    --skill-text-color: #111827;
-                    --skill-trail-color: #e5e7eb;
-                    --skill-path-color-default: #4ade80;
-                }
-                html.dark {
-                    --skill-text-color: #f9fafb;
-                    --skill-trail-color: #374151;
-                }
-            `}</style>
             <motion.section
                 id="Skills"
                 className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-24 text-center"
