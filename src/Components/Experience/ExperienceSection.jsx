@@ -8,6 +8,15 @@ const experienceData = [
     title: "💼 Internships",
     items: [
       {
+        company: "Amazon",
+        role: "Software Development Engineer Intern",
+        duration: "Jan 2026 - June 2026",
+        place: "Onsite",
+        description: "Working in product relay and tech team to build scalable services for Amazon Shopping. Involved in designing, developing, and deploying high-availability services that enhance user experience and drive business growth.",
+        link: "https://relay.amazon.com/",
+      },
+
+      {
         company: "TRDDC - Tata Research",
         role: "Research Intern",
         duration: "May 2025 - July 2025",
