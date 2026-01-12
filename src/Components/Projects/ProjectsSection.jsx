@@ -76,7 +76,7 @@ function Projects() {
             ))}
         </motion.div>
       </motion.div>
-      <h3 className="mt-8 text-xl ">Find More on <a href="https://github.com/shivaiitp" target="_blank" rel="noopener noreferrer">GitHub</a></h3>
+      <h3 className="mt-8 text-xl dark:text-white">Find More on <a href="https://github.com/shivaiitp" target="_blank" className="text-blue-700 dark:text-blue-700" rel="noopener noreferrer">GitHub</a></h3>
     </motion.section>
   );
 }

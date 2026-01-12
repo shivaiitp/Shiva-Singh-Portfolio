@@ -26,15 +26,12 @@ function App() {
         <div className="App">
           <Navbar />
           <Home />
-          {/* Suspense will show the fallback UI until the requested component has loaded */}
-          <Suspense fallback={<LoadingFallback />}>
             <About />
             <Skills />
             <Experience />
             <Projects />
             <ContactSection />
             <Footer />
-          </Suspense>
         </div>
       </GlobalBackground>
     </ThemeProvider>

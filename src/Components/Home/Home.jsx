@@ -31,43 +31,15 @@ function Home() {
     const [hoveredIcon, setHoveredIcon] = useState(null);
 
     const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } };
+    
     const itemVariants = { hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100, damping: 12 } } };
-    const buttonVariants = { hidden: { scale: 0, opacity: 0 }, visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 200, damping: 15 } }, hover: { scale: 1.1, boxShadow: "0 10px 30px rgba(34, 197, 94, 0.3)", transition: { type: "spring", stiffness: 400, damping: 10 } }, tap: { scale: 0.95 } };
 
-    const sendEmail = (e) => {
-            e.preventDefault();
-    
-            if (!validateForm()) return;
-    
-            setIsLoading(true);
-    
-            emailjs
-                .send(
-                    import.meta.env.VITE_EMAILJS_SERVICE_ID,
-                    import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-                    {
-                        name: formData.name,
-                        email: formData.email,
-                        message: formData.message,
-                    },
-                    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-                )
-                .then(() => {
-                    setIsLoading(false);
-                    setFormData({ name: "", email: "", message: "" });
-                    setShowSuccess(true);
-                    onClose();
-                    setTimeout(() => {
-                        setShowSuccess(false);
-                    }, 4000);
-                })
-                .catch((error) => {
-                    console.error("Email send error:", error);
-                    setErrors({ submit: "Failed to send email. Please try again later." });
-                    setIsLoading(false);
-                });
-        };
-        
+    const buttonVariants = {
+        hidden: { scale: 0, opacity: 0 },
+        visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 200, damping: 15 } },
+        tap: { scale: 0.95 }
+    };
+
     return (
         <motion.div
             id="Home"
@@ -79,7 +51,7 @@ function Home() {
             {/* LEFT HALF: Text Content */}
             <div className="w-full lg:w-1/2 text-center lg:text-left lg:pt-10 px-2 sm:px-4">
                 <motion.div variants={itemVariants}>
-                    <motion.h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter text-gray-900 dark:text-white" initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} viewport={{ once: true}} transition={{ duration: 0.8, ease: "easeOut" }}>
+                    <motion.h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter text-gray-900 dark:text-white" initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "easeOut" }}>
                         <motion.span className="inline-block" animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }} transition={{ duration: 2, repeat: Infinity, repeatDelay: 3, ease: "easeInOut" }}>
                             👋
                         </motion.span>
@@ -112,11 +84,11 @@ function Home() {
             {/* RIGHT HALF: Image and Social Icons */}
             <div className="w-full lg:w-1/2 flex justify-center items-center relative h-[300px] sm:h-[400px] md:h-[500px] mt-8 lg:mt-0">
                 <motion.div className="absolute w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-2 border-green-500/50 dark:border-green-400/30" animate={{ scale: [1, 1.02, 1], rotate: [0, 360] }} transition={{ scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 40, repeat: Infinity, ease: "linear" } }} />
-                <motion.img src={MyImg} alt="Shiva Singh" 
-                className="w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full object-cover shadow-2xl border-4 border-green-500/50 dark:border-green-400/30 relative z-10" 
-                initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} viewport={{ once: true}} 
-                transition={{ delay: 1, type: "spring", stiffness: 200, damping: 20 }} 
-                loading='lazy'
+                <motion.img src={MyImg} alt="Shiva Singh"
+                    className="w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full object-cover shadow-2xl border-4 border-green-500/50 dark:border-green-400/30 relative z-10"
+                    initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} viewport={{ once: true }}
+                    transition={{ delay: 1, type: "spring", stiffness: 200, damping: 20 }}
+                    loading='lazy'
                 />
 
                 {portfolioContent.socialIcons.map((item, i) => {
@@ -128,18 +100,18 @@ function Home() {
 
                     return (
                         <motion.div key={item.name} className="absolute" style={{ left: '50%', top: '50%', transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))` }} onMouseEnter={() => setHoveredIcon(i)} onMouseLeave={() => setHoveredIcon(null)}>
-                            <motion.a 
-                                href={item.url} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="flex items-center justify-center rounded-full text-white border-2 border-white/40 dark:border-white/20 backdrop-blur-sm relative overflow-hidden shadow-xl cursor-pointer" 
+                            <motion.a
+                                href={item.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center rounded-full text-white border-2 border-white/40 dark:border-white/20 backdrop-blur-sm relative overflow-hidden shadow-xl cursor-pointer"
                                 style={{ width: iconSize, height: iconSize, background: `linear-gradient(135deg, ${item.color}, ${item.color}DD)` }}
                                 initial={{ opacity: 0, scale: 0 }}
                                 animate={{ opacity: 1, scale: [1, 1.05, 1], rotate: [0, 360], y: [0, -8, 0], x: [0, Math.sin(i * 2) * 3, 0] }}
                                 transition={{ delay: 1.5 + i * 0.2, scale: { duration: 3 + i * 0.5, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 30 + i * 5, repeat: Infinity, ease: "linear" }, y: { duration: 2.5 + i * 0.3, repeat: Infinity, ease: "easeInOut" }, x: { duration: 4 + i * 0.4, repeat: Infinity, ease: "easeInOut" } }}
-                                whileHover={{ scale: 1.2, y: -10, transition: { type: "spring", stiffness: 300, damping: 10 }}} 
-                                whileTap={{ scale: 0.9, transition: { duration: 0.1, delay: 0 } }} 
-                                viewport={{ once: true}}
+                                whileHover={{ scale: 1.2, y: -10, transition: { type: "spring", stiffness: 300, damping: 10 } }}
+                                whileTap={{ scale: 0.9, transition: { duration: 0.1, delay: 0 } }}
+                                viewport={{ once: true }}
                             >
                                 <AnimatePresence>
                                     {hoveredIcon === i && (
@@ -165,9 +137,9 @@ function Home() {
                                     {hoveredIcon === i && (
                                         <>
                                             {[...Array(8)].map((_, index) => (
-                                                <motion.div 
-                                                    key={index} 
-                                                    className="absolute w-1 h-1 rounded-full pointer-events-none" 
+                                                <motion.div
+                                                    key={index}
+                                                    className="absolute w-1 h-1 rounded-full pointer-events-none"
                                                     style={{ backgroundColor: item.color, left: `${50 + Math.cos(index * 45 * Math.PI / 180) * 35}%`, top: `${50 + Math.sin(index * 45 * Math.PI / 180) * 35}%` }}
                                                     initial={{ scale: 0, opacity: 0 }}
                                                     animate={{ scale: [0, 1.5, 0], opacity: [0, 1, 0], x: [0, Math.cos(index * 45 * Math.PI / 180) * 25], y: [0, Math.sin(index * 45 * Math.PI / 180) * 25] }}

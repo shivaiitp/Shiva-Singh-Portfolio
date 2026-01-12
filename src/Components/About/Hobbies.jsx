@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// --- Constants moved outside the component definitions ---
 const hobbiesList = [
   { text: 'Coding', icon: '💻' },
   { text: 'Gaming', icon: '🎮' },
@@ -10,7 +9,7 @@ const hobbiesList = [
   { text: 'Photography', icon: '📸' },
   { text: 'Poetry Writing', icon: '✍️' },
   { text: 'Traveling', icon: '✈️' },
-  { text: 'Cinephile', icon: '🎬' },
+  { text: 'Movies', icon: '🎬' },
 ];
 
 const containerVariants = {
@@ -21,16 +20,18 @@ const containerVariants = {
   },
 };
 
-
-const HobbyCard = React.memo(({ icon, text, index }) => {
+const HobbyCard = React.memo(({ icon, text }) => {
   return (
     <motion.div
-      whileHover={{ scale: 1.05 ,transition: { type: "spring", stiffness: 300, damping: 15 } }}
+      whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300, damping: 15 } }}
       whileTap={{ scale: 0.95 }}
-      className="flex flex-col items-center justify-center p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg cursor-pointer text-center"
+      // Reduced padding (p-3), rounded corners (rounded-xl), and shadow size
+      className="flex flex-col items-center justify-center p-3 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm cursor-pointer text-center"
     >
-      <span className="text-5xl mb-4">{icon}</span>
-      <h3 className="text-md md:text-lg font-semibold text-gray-800 dark:text-white">
+      {/* Reduced icon size (text-3xl) and margin (mb-2) */}
+      <span className="text-3xl mb-2">{icon}</span>
+      {/* Reduced text size (text-xs/sm) */}
+      <h3 className="text-xs sm:text-sm font-semibold text-gray-800 dark:text-white">
         {text}
       </h3>
     </motion.div>
@@ -39,9 +40,10 @@ const HobbyCard = React.memo(({ icon, text, index }) => {
 
 const Hobbies = () => {
   return (
-    <section>
-      <div className="text-center mb-8 md:mb-10">
-        <p className="mb-0 md:mb-4 text-lg text-gray-600 dark:text-gray-300">
+    <section className="py-2">
+      {/* Reduced bottom margin */}
+      <div className="text-center mb-4 md:mb-6">
+        <p className="text-sm md:text-base text-gray-600 dark:text-gray-300">
           Things I love to do in my free time.
         </p>
       </div>
@@ -50,7 +52,8 @@ const Hobbies = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8"
+        // Reduced max-width (max-w-4xl) and grid gaps (gap-3)
+        className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 px-4"
       >
         {hobbiesList.map((hobby, index) => (
           <HobbyCard key={hobby.text} icon={hobby.icon} text={hobby.text} index={index} />
